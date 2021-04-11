@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-<link rel="shortcut icon" type="image/x-icon" href="IconoJuego.ico"/>
+<link rel="shortcut icon" type="image/x-icon" href="IconoJuego.ico" />
     <meta charset="UTF-8">
     <meta name="viewport"
       content="width=device-width,
@@ -41,65 +41,70 @@
         color: yellow;
       }
 
-      textarea {
+    
+
+.button {
+  border: 1px solid #7fffd4 ;
+        width: 100px;
+        text-align: center;
+}
+  .textarea {
     white-space: normal;
     text-align: justify;
     -moz-text-align-last: center; /* Firefox 12+ */
     text-align-last: center;
 }
 
-
-.botaca {
-text-decoration:none;
-font-weight: 600;
-font-size: 20px;
-color:#333333;
-padding-top:15px;
-padding-bottom:15px;
-padding-left:40px;
-padding-right:40px;
-background-color:#FFD27D;
-border-color: #d8d8d8;
-border-width: 3px;
-border-style: solid;
-border-radius:35px;
+.background-image{
+	  width: 100%;
+  height: auto;
 }
+
 
     </style>
   </head>
   <body>
     <h1 align="center"> -Trip Game- </h1>
-    <textarea cols="30" rows="5" wrap="hard" disabled="yes"> Instrucciones: Con las flechas centrales, ayuda al ovni haciendolo feliz  tomando su pildora</textarea>
-
-<div style="margin-right:400px;">
- <p align="center">
+    <textarea cols="40" rows="5" wrap="hard" disabled="yes"> Instrucciones: 
+Con las flechas laterales, ayuda al extraterrestre a tomar la pildora. También puedes interactuar. 
+    </textarea>
+<left>
+	<div class = "button">
+ <p>
       <button onclick="arriba();">
         🔼
       </button>
   </p>
 
-    <p align="center">
-      <button onclick="retrocede();" style="margin-right: 20px">
+    <p>
+      <button onclick="retrocede();">
         ◀
       </button>
+
+      <button onclick="reinicia();">
+          ⚫︎
+        </button>
   
-      <button onclick="avanza();" style="margin-left: 40px">
+      <button onclick="avanza();">
         ▶
       </button>
-  </p>
-  <p align="center">
+
+
+</p>
+      <p>
       <button onclick="abajo();">
         🔽
       </button>
     </p>
 
     <p>
-    <button onclick="mueve();"  style="margin-left: 600px">
-     Interactúa
+    <button onclick="mueve();">
+     Interatúa
     </button>
   </p>
     </div>
-
+</left>
+    
     <footer>
       <p align="center">
         &copy; by
