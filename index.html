@@ -1,1 +1,345 @@
-<h1> hola kbron </h1>
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+<link rel="shortcut icon" type="image/x-icon" href="C:\Users\HP\Desktop\IconoJuego.ico" />
+    <meta charset="UTF-8">
+    <meta name="viewport"
+      content="width=device-width,
+       initial-scale=1.0">
+    <title>Trip Game</title>
+    <style>
+      
+      .sprite {
+        position: fixed;
+        font-size: 4rem;
+      }
+      html {
+        color: white;
+        
+        background-image:
+          url("https://www.wallpapertip.com/wmimgs/4-41271_minimal-artwork-pyramids-dark-night-wallpaper-retro-4k.jpg");
+        
+        background-repeat: no-repeat;
+        
+        background-position-x:
+          center;
+       
+        background-position-y:
+          center;
+        
+        background-attachment:
+          fixed;
+        
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        -o-background-size: cover;
+        background-size: cover;
+      }
+
+      a {
+      
+        color: yellow;
+      }
+
+      textarea {
+    white-space: normal;
+    text-align: justify;
+    -moz-text-align-last: center; /* Firefox 12+ */
+    text-align-last: center;
+}
+
+
+.botaca {
+text-decoration:none;
+font-weight: 600;
+font-size: 20px;
+color:#333333;
+padding-top:15px;
+padding-bottom:15px;
+padding-left:40px;
+padding-right:40px;
+background-color:#FFD27D;
+border-color: #d8d8d8;
+border-width: 3px;
+border-style: solid;
+border-radius:35px;
+}
+
+    </style>
+  </head>
+  <body>
+    <h1 align="center"> -Trip Game- </h1>
+    <textarea cols="30" rows="5" wrap="hard" disabled="yes"> Instrucciones: Con las flechas centrales, ayuda al ovni haciendolo feliz  tomando su pildora</textarea>
+
+<div style="margin-right:400px;">
+ <p align="center">
+      <button onclick="arriba();">
+        🔼
+      </button>
+  </p>
+
+    <p align="center">
+      <button onclick="retrocede();" style="margin-right: 20px">
+        ◀
+      </button>
+  
+      <button onclick="avanza();" style="margin-left: 40px">
+        ▶
+      </button>
+  </p>
+  <p align="center">
+      <button onclick="abajo();">
+        🔽
+      </button>
+    </p>
+
+    <p>
+    <button onclick="mueve();"  style="margin-left: 600px">
+     Interatúa
+    </button>
+  </p>
+    </div>
+
+    <footer>
+      <p align="center">
+        &copy; by
+        Axel de la Rosa.
+      </p>
+    </footer>
+
+     <output id="pildora"
+      class="sprite">
+    💊
+    </output>
+    <script>
+      const REFRESCO = 120;
+      const VELOCIDAD = 0.3;
+      let ángulo = 0;
+      setInterval(gira, REFRESCO);
+      function gira() {
+        const xBase =
+          window.innerWidth / 2;
+        const amplitudX =
+          window.innerWidth / 3;
+        const yBase =
+          window.innerHeight / 2;
+        const amplitudY =
+          window.innerHeight / 3;
+        const x = xBase +
+          amplitudX * Math.cos(ángulo);
+        const y = yBase +
+          amplitudY * Math.sin(ángulo);
+        pildora.style =
+          `left: ${x}px; bottom: ${y}px`;
+        ángulo += VELOCIDAD;
+      pildora.style.left = `${x}px`;
+        pildora.style.bottom = `${y}px`;
+        if (seTocan(pildora, carita1)) {
+          carita1.value = "😊";
+          clearInterval(intervalo);
+        } else {
+          x = (x + velocidad) % x2;
+        }
+      }
+    
+      function seTocan(e1, e2) {
+        const rE1 =
+          e1.getBoundingClientRect();
+        const rE2 =
+          e2.getBoundingClientRect();
+        return (rE1.right >= rE2.left &&
+          rE1.left <= rE2.right &&
+          rE1.top <= rE2.bottom &&
+          rE1.bottom >= rE2.top);
+      }
+    </script>
+    <!--
+     <script>
+      let x = 0;
+      const REFRESCO = 5;
+      let intervalo = setInterval(
+        avanza, REFRESCO);
+      function avanza() {
+        const velocidad =
+          window.innerWidth / 2000;
+        const x2 =
+          window.innerWidth;
+        const y =
+          window.innerHeight / 2;
+        carita1.style.left =
+          `${window.innerWidth / 2}px`;
+        carita1.style.bottom =`left: ${xs}px; bottom: ${ys}px`;
+        pildora.style.left = `${x}px`;
+        pildora.style.bottom = `${y}px`;
+        if (seTocan(pildora, carita1)) {
+          carita1.value = "😊";
+          clearInterval(intervalo);
+        } else {
+          x = (x + velocidad) % x2;
+        }
+      }
+    
+      function seTocan(e1, e2) {
+        const rE1 =
+          e1.getBoundingClientRect();
+        const rE2 =
+          e2.getBoundingClientRect();
+        return (rE1.right >= rE2.left &&
+          rE1.left <= rE2.right &&
+          rE1.top <= rE2.bottom &&
+          rE1.bottom >= rE2.top);
+      }
+    </script>
+--> 
+    <script>
+    function aleatorio(menor,
+      mayor) {
+      return menor + Math.floor(
+        Math.random() *
+        (mayor - menor + 1));
+    }
+    class SeMueve {
+      muévete() {
+        throw new Error("intf");
+      }
+    }
+
+    class HumanoWeb
+      extends HTMLElement {
+      connectedCallback() {
+        this.x = 0;
+        this.y = 0;
+        this.innerHTML = "🏃";
+        this.style.position =
+          "fixed";
+        this.style.fontSize =
+          "3.5rem";
+        this.style.right =
+          `${this.x}px`;
+        this.style.bottom =
+          `${this.y}px`;
+      }
+      muévete() {
+        this.x = (this.x + 30) %
+          window.innerWidth;
+        this.style.right =
+          `${this.x}px`;
+      }
+    }
+    customElements.define(
+      "humano-web", HumanoWeb);
+
+    class PlatilloWeb
+      extends HTMLElement {
+      connectedCallback() {
+        this.x = aleatorio(0,
+          Math.floor(
+            window.innerWidth));
+        this.y = aleatorio(0,
+          Math.floor(window.
+            innerHeight));
+        this.innerHTML = "🛸";
+        this.style.position =
+          "fixed";
+        this.style.fontSize =
+          "3.5rem";
+        this.style.left =
+          `${this.x}px`;
+        this.style.top =
+          `${this.y}px`;
+      }
+      muévete() {
+        this.y = (this.y + 10) %
+          window.innerHeight;
+        this.style.top =
+          `${this.y}px`;
+      }
+    }
+    customElements.define(
+      "platillo-web", PlatilloWeb);
+  </script>
+<script>
+    const figuras =
+      [new PlatilloWeb(),
+      new HumanoWeb(),
+      new PlatilloWeb()];
+    for (let fig of figuras) {
+      document.body.append(fig);
+    }
+    function mueve() {
+      for (var fig of figuras) {
+        fig.muévete();
+      }
+    }
+  </script>
+
+    <output id="carita1"
+      class="sprite">
+      👽 
+    </output>
+  
+   <script>
+      let yBase;
+      let xMenor;
+      let xMayor;
+      let a = 0;
+      let yArriba;
+      let yAbajo;
+    
+
+      const VELOCIDADS= 70;
+      actualiza();
+      let xs= xMenor;
+      let ys= yBase;
+      dibuja();
+
+      function retrocede() {
+        actualiza();
+        if (xs> xMenor) {
+          xs-= VELOCIDADS;
+        }
+        dibuja();
+      }
+      function avanza() {
+        actualiza();
+        if (xs< xMayor) {
+          xs+= VELOCIDADS;
+        }
+        dibuja();
+      }
+
+      function arriba(){
+      	actualiza();
+      	if (ys < yArriba){
+      		ys += VELOCIDADS;
+      	}
+      	dibuja();
+      }
+
+      function abajo(){
+      	actualiza();
+      	if (ys > yAbajo){
+      		ys -= VELOCIDADS;
+      	}
+      	dibuja();
+      }
+      function actualiza() {
+        yAbajo=
+         4*window.innerHeight/30;
+         yArriba=
+         4 * window.innerWidth / 4;
+        yBase =
+          window.innerHeight / 2;
+        xMenor =
+          window.innerWidth / 20;
+        xMayor =
+          4 * window.innerWidth / 5;
+      }
+      function dibuja() {
+        carita1.style =
+                  `left: ${xs}px; bottom: ${ys}px`;
+      }
+    </script>
+  
+  </body>
+</html>
